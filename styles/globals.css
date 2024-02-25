@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  /* --bg-gradient-1: #4d0378;
+  --bg-gradient-2: rgba(77, 8, 189, 0.882); */
+  --bg-gradient-1: #45affa;
+  --bg-gradient-2: #9250fc6e;
+  --card-bg: linear-gradient(135deg, #eaf5ff, rgb(251, 223, 191));
+  --card-hover-shadow: 2px 2px 5px #ff961a;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.no_select {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.bg_gradient {
+  background-image: radial-gradient(
+    circle,
+    var(--bg-gradient-1),
+    var(--bg-gradient-2)
+  );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: #2400b5;
+}
+
+a {
+  text-decoration: none;
+  color: #2400b5;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #2400b5;
+}
+
+a:active {
+  color: #0063f7;
+}
+
+.card_bg {
+  background: var(--card-bg);
+}
+
+.card_shadow {
+  box-shadow: var(--card-hover-shadow);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
