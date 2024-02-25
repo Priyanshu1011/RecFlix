@@ -22,7 +22,10 @@ export default function Home() {
       </section>
 
       {/* Features section */}
-      <section className="flex flex-col justify-around items-center text-center gap-y-10 mt-10 mb-6">
+      <section
+        id="features"
+        className="flex flex-col justify-around items-center text-center gap-y-10 mt-10 mb-6"
+      >
         <h2 className="text-4xl font-bold">What We Offer</h2>
         <div className="flex flex-row justify-center items-center flex-wrap gap-y-8 md:gap-x-8 lg:gap-x-14 lg:gap-y-0">
           {features.map((feature) => (
