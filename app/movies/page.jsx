@@ -3,22 +3,35 @@
 import { useState } from "react";
 import { movies } from "@/data/movies";
 import MovieRecoCard from "@/components/Movies/MovieRecoCard";
+import Router from "next/router";
 
 const Movies = () => {
   const [name, setName] = useState("");
+  const [moviesList, setMoviesList] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000", {
+      const response = await fetch("/api/movies", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name }),
+        body: JSON.stringify({ "movie_name": name }),
       });
+
+      // const response = await fetch("/api/movies", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ name }),
+      // });
+
       if (response.ok) {
         console.log("Name submitted successfully!");
+        // Router.push("/"); // goes to Home page
+
+        // Update state variable "movies" with data in array "response"
+        setMoviesList([...moviesList, response]);
+
       } else {
         console.error("Failed to submit name!");
       }
@@ -53,7 +66,7 @@ const Movies = () => {
         </form>
       </div>
       <div className="flex flex-row justify-center items-center flex-wrap gap-y-8 md:gap-x-8 lg:gap-x-14 lg:gap-y-0">
-        {movies.map((movie) => (
+        {moviesList.map((movie) => (
           <MovieRecoCard
             key={movie.key}
             title={movie.title}
@@ -61,6 +74,14 @@ const Movies = () => {
             genre={movie.genre}
           />
         ))}
+        {/* {movies.map((movie) => (
+          <MovieRecoCard
+            key={movie.key}
+            title={movie.title}
+            yearOfRelease={movie.yearOfRelease}
+            genre={movie.genre}
+          />
+        ))} */}
       </div>
     </section>
   );
